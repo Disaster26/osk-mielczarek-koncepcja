@@ -14,7 +14,7 @@
 @font-face{font-family:"Saira";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/saira-pl.woff2) format("woff2");unicode-range:U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C}
 @font-face{font-family:"Figtree";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/figtree-rdzen.woff2) format("woff2");unicode-range:U+0020-007E,U+00A0,U+00A9,U+00AB,U+00B0,U+00B7,U+00BB,U+00D3,U+00F3,U+2013,U+2018-2019,U+201C-201E,U+2022,U+2026}
 @font-face{font-family:"Figtree";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/figtree-pl.woff2) format("woff2");unicode-range:U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C}
-:root{--L:#0900EC;--Lc:#0700B8;--tx:#11142B;--tx2:#4A4E66;--sz:#EEF0F5;--li:#D9DCE6;--w:#fff;--max:1200px}
+:root{--L:#0900EC;--Lc:#0700B8;--g:#1B1F36;--tx:#11142B;--tx2:#4A4E66;--sz:#EEF0F5;--li:#D9DCE6;--w:#fff;--max:1200px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;font:17px/1.6 "Figtree",system-ui,sans-serif;color:var(--tx);background:#fff;overflow-x:hidden}
@@ -37,7 +37,7 @@ section{scroll-margin-top:68px}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .menu{display:flex;gap:26px;align-items:center}
 .menu a{text-decoration:none;font-weight:600;font-size:15.5px;color:var(--tx2)}
-.menu a:hover{color:var(--L)}
+.menu a:hover,.menu a[aria-current]{color:var(--L)}
 .tel{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:"Saira",sans-serif;font-weight:700;font-size:18px;color:var(--L);white-space:nowrap}
 .tel svg{width:18px;height:18px}
 .burger{display:none;background:none;border:0;padding:10px;margin-right:-10px;cursor:pointer}
@@ -60,18 +60,18 @@ section{scroll-margin-top:68px}
 .kat::before{content:"";position:absolute;left:-14px;bottom:-14px;width:46%;height:62%;border-left:14px solid currentColor;border-bottom:14px solid currentColor;pointer-events:none}
 
 /* pierwszy ekran */
-.hero{background:var(--L);color:#fff;position:relative;overflow:hidden}
+.hero{background:#fff;color:var(--tx);position:relative;overflow:hidden;border-bottom:1px solid var(--li)}
 .hero .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;height:calc(100svh - 64px);min-height:600px;max-height:900px;padding-top:40px;padding-bottom:48px}
 .hero .txt{max-width:560px}
 .hero h1{font-size:clamp(34px,3.5vw,54px);margin-bottom:20px}
-.hero .lead{font-size:19px;color:#E4E3FF;max-width:34em;margin-bottom:30px}
+.hero .lead{font-size:19px;color:var(--tx2);max-width:34em;margin-bottom:30px}
 .hero .kat{position:absolute;top:0;right:0;bottom:0;width:50vw;color:#fff}
 .hero .kat img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
 .hero .kat::before{left:36px;bottom:36px;width:34%;height:40%;z-index:1}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;background:#fff;color:var(--L);font:700 18px/1 "Saira",sans-serif;text-decoration:none;border:0;cursor:pointer}
-.btn:hover{background:var(--tx);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;background:var(--g);color:#fff;font:700 18px/1 "Saira",sans-serif;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{background:var(--L);color:#fff}
 .btn svg{width:20px;height:20px}
-.hero .info{margin-top:22px;font-size:15.5px;color:#CFCDFF}
+.hero .info{margin-top:22px;font-size:15.5px;color:var(--tx2)}
 @media (max-width:959px){
  .hero .wrap{grid-template-columns:1fr;gap:0;height:auto;min-height:0;max-height:none;padding:0 0 28px}
  .hero .kat{position:relative;width:auto;order:-1;margin:0}
@@ -80,7 +80,7 @@ section{scroll-margin-top:68px}
  .hero .txt{padding:22px 20px 0;max-width:none}
  .hero h1{font-size:clamp(27px,7.4vw,40px);margin-bottom:14px}
  .hero .lead{font-size:16.5px;margin-bottom:24px}
- .btn{width:100%}
+ .btn{width:100%;font-size:16.5px;padding:0 14px;white-space:nowrap}
  .hero .info{margin-top:14px;font-size:14.5px}
 }
 @media (max-width:959px) and (max-height:700px){.hero .kat img{height:30svh;min-height:170px}}
@@ -94,6 +94,15 @@ section{scroll-margin-top:68px}
 .omnie .kat{color:var(--L);margin:0 0 14px 14px}
 .cyt{font-size:19px;line-height:1.65}
 .cyt p:first-child::before{content:"\201E"}
+.oferta{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;margin-top:8px}
+.blok h3{font-size:24px;padding-bottom:14px;border-bottom:2px solid var(--tx);margin-bottom:0}
+.blok h3.nast{margin-top:40px;font-size:21px}
+.pkt{list-style:none;margin:0;padding:0}
+.pkt li{position:relative;padding:15px 0 15px 26px;border-bottom:1px solid var(--li);font-size:17px}
+.pkt li::before{content:"";position:absolute;left:0;top:21px;width:9px;height:13px;border-left:3px solid var(--L);border-bottom:3px solid var(--L)}
+.pkt-op{margin-top:14px;color:var(--tx2)}
+@media (max-width:959px){.oferta{grid-template-columns:1fr;gap:44px}}
+.pkk p+p{margin-top:12px}
 .podpis{font-family:"Saira",sans-serif;font-weight:700;font-size:20px;margin-top:22px}
 .podpis span{display:block;font:500 15px "Figtree",sans-serif;color:var(--tx2)}
 
@@ -107,9 +116,9 @@ section{scroll-margin-top:68px}
 @media (max-width:959px){.kurs{grid-template-columns:1fr}.kurs li,.kurs li:nth-child(3n+2),.kurs li:nth-child(3n+3){padding:22px 0;border-left:0}}
 
 /* cennik - mocna sekcja */
-.cennik{background:var(--L);color:#fff}
+.cennik{background:var(--g);color:#fff}
 .cennik h2{color:#fff}
-.cennik .intro{color:#DCDBFF;max-width:36em}
+.cennik .intro{color:#C9CCDA;max-width:36em}
 .ceny{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;margin-top:40px;align-items:start}
 .glowna{background:#fff;color:var(--tx);padding:36px 36px 32px;position:relative}
 .glowna .nazwa{font:700 22px "Saira",sans-serif}
@@ -120,8 +129,8 @@ section{scroll-margin-top:68px}
 .lista{margin:0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.35)}
 .lista li{display:flex;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.35);font-size:17px}
 .lista b{font:700 24px/1.2 "Saira",sans-serif;white-space:nowrap}
-.lista small{display:block;color:#CFCDFF;font-size:14.5px}
-.cennik .uwaga{margin-top:22px;color:#CFCDFF;font-size:15px}
+.lista small{display:block;color:#AEB2C4;font-size:14.5px}
+.cennik .uwaga{margin-top:22px;color:#AEB2C4;font-size:15px}
 @media (max-width:959px){.ceny{grid-template-columns:1fr;gap:32px}.glowna{padding:26px 22px}}
 
 .dosz{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:34px}
@@ -144,13 +153,12 @@ section{scroll-margin-top:68px}
 .dane a{text-decoration:none}
 .dane .tel{font-size:30px;margin:6px 0 4px}
 .dane address{font-style:normal;margin:22px 0}
-.dojazd{margin-top:22px;padding:18px 20px;background:var(--L);color:#fff;font-weight:600}
+.dojazd{margin-top:22px;padding:18px 20px;background:#fff;border-left:6px solid var(--L);font-weight:600}
 form{display:grid;gap:14px;margin-top:30px}
 label{font-size:14.5px;font-weight:600;color:var(--tx2);display:grid;gap:6px}
 input,select,textarea{font:inherit;font-size:16px;padding:13px 14px;border:1px solid #C5C9D6;background:#fff;color:var(--tx);width:100%;border-radius:0}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--L);outline-offset:0;border-color:var(--L)}
-form .btn{background:var(--L);color:#fff;justify-self:start}
-form .btn:hover{background:var(--tx)}
+form .btn{justify-self:start}
 .ok{display:none;padding:14px 16px;background:var(--sz);border-left:6px solid var(--L)}
 .mapa{min-height:420px;background:var(--sz);position:relative}
 .mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -183,11 +191,11 @@ footer .dol{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-b
   <a class="znak" href="#" aria-label="OSK Mielczarek - strona główna"><span>Mie<span class="tab">L</span>czarek<small>Ośrodek Szkolenia Kierowców</small></span></a>
   <nav class="menu" id="menu" aria-label="Menu">
    <a href="#o-mnie">O mnie</a>
-   <a href="#kurs">Kurs kat. B</a>
+   <a href="#oferta">Oferta</a>
    <a href="#cennik">Cennik</a>
-   <a href="#doszkalanie">Doszkalanie</a>
-   <a href="#jak-zaczac">Jak zacząć</a>
+   <a href="#jak-zaczac">Od czego zacząć</a>
    <a href="#kontakt">Kontakt</a>
+   <a href="standardy-ochrony-maloletnich.html">Ochrona małoletnich</a>
    <a class="tel" href="tel:+48507472445"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3h4l1.5 4-2.3 1.5a10 10 0 0 0 5.3 5.3L13 11.5l4 1.5v4a1 1 0 0 1-1 1A15 15 0 0 1 2 4a1 1 0 0 1 1-1z"/></svg>507 472 445</a>
   </nav>
   <a class="tel zew" href="tel:+48507472445"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3h4l1.5 4-2.3 1.5a10 10 0 0 0 5.3 5.3L13 11.5l4 1.5v4a1 1 0 0 1-1 1A15 15 0 0 1 2 4a1 1 0 0 1 1-1z"/></svg>507 472 445</a>
@@ -199,13 +207,13 @@ footer .dol{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-b
 <section class="hero">
  <div class="wrap">
   <div class="txt">
-   <h1>Nauka jazdy kat. B pod Oławą - z jednym instruktorem, bez zbędnych nerwów</h1>
-   <p class="lead">Jeździsz Hyundaiem i20, takim samym jak na egzaminie w DORD. Jazdy mogą zaczynać się i kończyć pod Twoim domem.</p>
-   <a class="btn" href="tel:+48507472445"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3h4l1.5 4-2.3 1.5a10 10 0 0 0 5.3 5.3L13 11.5l4 1.5v4a1 1 0 0 1-1 1A15 15 0 0 1 2 4a1 1 0 0 1 1-1z"/></svg>Zapisz się: 507 472 445</a>
-   <p class="info">Kurs kat. B 4400 zł, raty bez oprocentowania</p>
+   <h1>OSK Mielczarek - ośrodek szkolenia kierowców</h1>
+   <p class="lead">Zajęcia praktyczne z jednym instruktorem, bez zbędnych nerwów i w miłej atmosferze w dogodnych dla Państwa terminach.</p>
+   <a class="btn" href="tel:+48507472445"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3h4l1.5 4-2.3 1.5a10 10 0 0 0 5.3 5.3L13 11.5l4 1.5v4a1 1 0 0 1-1 1A15 15 0 0 1 2 4a1 1 0 0 1 1-1z"/></svg>Kliknij i zadzwoń: 507 472 445</a>
+   <p class="info">Kurs kat. B · jazdy doszkalające · badania dla kierowców</p>
   </div>
   <div class="kat">
-   <img src="img/auto-1024.webp" srcset="img/auto-640.webp 640w, img/auto-1024.webp 1024w, img/auto-1600.webp 1600w" sizes="(min-width:960px) 64vw, 100vw" width="1600" height="1200" alt="Samochód nauki jazdy Hyundai i20 OSK Mielczarek z tablicą L na dachu" fetchpriority="high">
+   <img src="img/auto-1024.webp" srcset="img/auto-640.webp 640w, img/auto-1024.webp 1024w, img/auto-1600.webp 1600w" sizes="(min-width:960px) 50vw, 100vw" width="1600" height="1200" alt="Samochód nauki jazdy Hyundai i20 OSK Mielczarek z tablicą L na dachu" fetchpriority="high">
   </div>
  </div>
 </section>
@@ -214,65 +222,62 @@ footer .dol{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-b
  <div class="wrap dwie">
   <div class="kat"><img src="img/kierownica-720.webp" srcset="img/kierownica-720.webp 720w, img/kierownica-1200.webp 1200w" sizes="(min-width:960px) 42vw, 100vw" width="1200" height="900" loading="lazy" alt="Kierownica samochodu szkoleniowego Hyundai i20"></div>
   <div>
-   <h2>Nie jestem nikim nowym na oławskim rynku</h2>
+   <h2>O mnie</h2>
    <div class="cyt">
-    <p>Uprawnienia instruktora nauki jazdy kat. B mam od 2007 roku. Przez 15 lat byłam współwłaścicielką jednej z większych oławskich szkół jazdy i cały czas w niej uczyłam. Potem otworzyłam własny ośrodek.</p>
-    <p>W 2011 roku ukończyłam kurs dla kandydatów na egzaminatorów w Dolnośląskim Ośrodku Ruchu Drogowego, więc wiem, na co egzaminator zwraca uwagę. Tę wiedzę chętnie przekażę Państwu na jazdach."</p>
+    <p>Nie jestem nikim nowym na rynku oławskim. Uprawnienia instruktora nauki jazdy kat. B posiadam od 2007 roku. Przez 15 lat byłam współwłaścicielem jednej z większych oławskich szkół nauki jazdy, będąc w niej czynnym instruktorem.</p>
+    <p>Po 15 latach szkolenia otworzyłam własną szkołę jazdy. W 2011 roku ukończyłam kurs dla kandydatów na egzaminatorów w Dolnośląskim Ośrodku Ruchu Drogowego, dzięki któremu zdobyłam wiedzę z zakresu egzaminowania.</p>
+    <p>Chętnie tę wiedzę i doświadczenie przekażę Państwu podczas szkolenia w moim ośrodku.&#8221;</p>
    </div>
-   <p class="podpis">Agnieszka Mielczarek<span>instruktorka i właścicielka ośrodka</span></p>
+   <p class="podpis">Serdecznie zapraszam!<span>Agnieszka Mielczarek</span></p>
   </div>
  </div>
 </section>
 
-<section class="sek szara" id="kurs">
+<section class="sek szara" id="oferta">
  <div class="wrap">
-  <h2>Kurs prawa jazdy kat. B</h2>
-  <ul class="kurs">
-   <li><h3>Kurs bez wykładów</h3><p>Nie musisz siedzieć na salce, skupiamy się na tym, co najważniejsze: na jeździe.</p></li>
-   <li><h3>Auto jak na egzaminie</h3><p>Jeździmy Hyundaiem i20, na takich samochodach zdaje się egzamin państwowy w DORD.</p></li>
-   <li><h3>Jeden instruktor</h3><p>Całe zajęcia praktyczne z tą samą osobą, w spokojnej atmosferze i w terminach, które Tobie pasują.</p></li>
-   <li><h3>Egzamin w Oławie lub we Wrocławiu</h3><p>Uczymy jeździć i przygotowujemy do egzaminu państwowego w obu miastach.</p></li>
-   <li><h3>Jazdy spod domu</h3><p>Możesz zaczynać i kończyć jazdy pod swoim domem.</p></li>
-   <li><h3>Materiały gratis</h3><p>Materiały szkoleniowe dostajesz w cenie kursu.</p></li>
-  </ul>
+  <h2>Oferta</h2>
+  <div class="oferta">
+   <div class="blok">
+    <h3>Kurs kat. B</h3>
+    <ul class="pkt">
+     <li>Kurs bezwykładowy</li>
+     <li>Nauka jazdy odbywa się na pojeździe Hyundai i20 (obecnie na takich pojazdach zdaje się egzamin państwowy w DORD)</li>
+     <li>Zajęcia praktyczne z jednym instruktorem, bez zbędnych nerwów i w miłej atmosferze w dogodnych dla Państwa terminach</li>
+     <li>Uczymy się jeździć i przygotowujemy do egzaminu państwowego w Oławie i we Wrocławiu</li>
+     <li>Możliwość rozpoczynania i zakończenia jazd pod domem kursanta</li>
+     <li>Materiały szkoleniowe gratis</li>
+    </ul>
+   </div>
+   <div class="blok" id="doszkalanie">
+    <h3>Jazdy doszkalające</h3>
+    <ul class="pkt">
+     <li>Doszkolenie kandydatów na kierowców spoza naszego ośrodka</li>
+     <li>Doszkolenie osób posiadających prawo jazdy (bierni kierowcy)</li>
+     <li>Doszkolenie osób, którym zatrzymano lub cofnięto uprawnienia do kierowania pojazdami na kat. B</li>
+    </ul>
+    <h3 class="nast">Badania dla kierowców u zaprzyjaźnionych lekarzy</h3>
+    <p class="pkt-op">(Współpracujemy z pracownią psychologiczną oraz lekarzami uprawnionymi do badań kandydatów na kierowców)</p>
+   </div>
+  </div>
  </div>
 </section>
 
 <section class="sek cennik" id="cennik">
  <div class="wrap">
   <h2>Cennik</h2>
-  <p class="intro">Kurs kat. B można opłacić w ratach bez oprocentowania.</p>
   <div class="ceny">
    <div class="glowna">
     <div class="nazwa">Kurs kat. B</div>
     <div class="kwota">4400<span>zł</span></div>
-    <div>możliwość wpłat w ratach, bez oprocentowania</div>
-    <ul>
-     <li>jazdy Hyundaiem i20 z jednym instruktorem</li>
-     <li>przygotowanie do egzaminu w Oławie lub we Wrocławiu</li>
-     <li>materiały szkoleniowe gratis</li>
-    </ul>
+    <div>(możliwość wpłat ratami, bez oprocentowania)</div>
    </div>
    <div>
     <ul class="lista">
-     <li><span>Dodatkowa godzina jazdy<small>dla kursantów naszej szkoły</small></span><b>150 zł</b></li>
-     <li><span>Dodatkowa godzina jazdy<small>dla osób z innych szkół jazdy</small></span><b>160 zł</b></li>
-     <li><span>Badania lekarskie dla kierowców<small>u współpracujących lekarzy</small></span><b>200 zł</b></li>
+     <li><span>Dodatkowa godzina jazdy<small>(dla osób z naszej szkoły)</small></span><b>150 zł</b></li>
+     <li><span>Dodatkowa godzina jazdy<small>(dla osób z innej szkoły jazdy)</small></span><b>160 zł</b></li>
+     <li><span>Badania lekarskie</span><b>200 zł</b></li>
     </ul>
-    <p class="uwaga">Nie wiesz, ile jazd dodatkowych potrzebujesz? Zadzwoń, doradzimy.</p>
    </div>
-  </div>
- </div>
-</section>
-
-<section class="sek szara" id="doszkalanie">
- <div class="wrap">
-  <h2>Jazdy doszkalające</h2>
-  <p>Dla każdego, kto chce poczuć się pewniej za kierownicą.</p>
-  <div class="dosz">
-   <div><h3>Kursanci innych szkół</h3><p>Dodatkowe jazdy przed egzaminem dla kandydatów na kierowców spoza naszego ośrodka.</p></div>
-   <div><h3>Bierni kierowcy</h3><p>Masz prawo jazdy, ale dawno nie jeździłeś albo czujesz stres w ruchu? Wrócisz do jazdy spokojnie.</p></div>
-   <div><h3>Po utracie uprawnień</h3><p>Doszkolenie osób, którym zatrzymano lub cofnięto uprawnienia do kierowania pojazdami kat. B.</p></div>
   </div>
  </div>
 </section>
@@ -282,18 +287,14 @@ footer .dol{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-b
   <div>
    <h2>Od czego zacząć?</h2>
    <ol class="kroki">
-    <li><p>Ukończone <b>16 lat i 9 miesięcy</b>. Osoby niepełnoletnie potrzebują zgody rodzica lub opiekuna prawnego.</p></li>
-    <li><p>Dokument tożsamości.</p></li>
-    <li><p>Badanie lekarskie dla kierowców (możesz je zrobić u współpracujących z nami lekarzy).</p></li>
-    <li><p>Zdjęcie 35 x 45 mm.</p></li>
+    <li><p>Minimalny wiek osoby chcącej zapisać się na kurs kat. B to <b>16 lat i 9 miesięcy</b> (u niepełnoletnich wymagana zgoda rodzica lub opiekuna prawnego)</p></li>
+    <li><p>Posiadanie dokumentu tożsamości</p></li>
+    <li><p>Wykonanie badania dla kierowców</p></li>
+    <li><p>Zdjęcie 35 x 45 mm</p></li>
    </ol>
   </div>
   <div>
-   <div class="pkk"><p>Z tymi dokumentami idziesz do wydziału komunikacji, który wydaje <b>profil kandydata na kierowcę (PKK)</b>. Ten numer otwiera drogę do rozpoczęcia kursu w wybranej szkole jazdy.</p></div>
-   <div class="badania">
-    <h3>Badania dla kierowców</h3>
-    <p>Współpracujemy z pracownią psychologiczną oraz lekarzami uprawnionymi do badań kandydatów na kierowców. Badanie kosztuje 200 zł.</p>
-   </div>
+   <div class="pkk"><p>Posiadając ww. dokumenty i wiek, udajemy się do wydziału komunikacji, który do dwóch dni roboczych wydaje <b>profil kandydata na kierowcę, w skrócie PKK</b>.</p><p>Numer ten otwiera Państwu furtkę do rozpoczęcia szkolenia w wybranej szkole nauki jazdy.</p></div>
   </div>
  </div>
 </section>
@@ -301,11 +302,11 @@ footer .dol{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-b
 <section class="sek szara kontakt" id="kontakt">
  <div class="wrap dwie">
   <div class="dane">
-   <h2>Kontakt i zapisy</h2>
+   <h2>Tu nas znajdziesz</h2>
    <a class="tel" href="tel:+48507472445">507 472 445</a>
    <div><a href="mailto:mielczarek.nauka@gmail.com">mielczarek.nauka@gmail.com</a></div>
-   <address><b>OSK Mielczarek - sala wykładowa i biuro</b><br>ul. Ogrodowa 13A<br>55-200 Stanowice (lotnisko)</address>
-   <div class="dojazd">Nie masz czym do nas dojechać? Zadzwoń, a my dojedziemy do Ciebie.</div>
+   <address><b>OSK Mielczarek - sala wykładowa/biuro</b><br>ul. Ogrodowa 13A<br>55-200 Stanowice (lotnisko)</address>
+   <div class="dojazd">Nie masz czym do nas dojechać? Zadzwoń, a my dojedziemy do Ciebie!</div>
    <form id="zapis" novalidate>
     <label>Imię i nazwisko<input name="imie" autocomplete="name" required></label>
     <label>Telefon<input name="tel" type="tel" autocomplete="tel" required></label>
@@ -326,14 +327,14 @@ footer .dol{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-b
    <p style="margin-top:16px">ul. Ogrodowa 13A, 55-200 Stanowice<br><a href="tel:+48507472445">507 472 445</a> · <a href="mailto:mielczarek.nauka@gmail.com">mielczarek.nauka@gmail.com</a></p>
   </div>
   <ul>
-   <li><a href="#kurs">Kurs kat. B</a></li>
+   <li><a href="#oferta">Oferta</a></li>
    <li><a href="#cennik">Cennik</a></li>
-   <li><a href="#doszkalanie">Doszkalanie</a></li>
+   <li><a href="#jak-zaczac">Od czego zacząć</a></li>
    <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <ul>
    <li><a href="#">Polityka prywatności</a></li>
-   <li><a href="#">Standardy ochrony małoletnich</a></li>
+   <li><a href="standardy-ochrony-maloletnich.html">Standardy ochrony małoletnich</a></li>
   </ul>
   <div class="dol"><span>© 2026 OSK Mielczarek</span><a class="wylinka-badge" href="https://wylinka.pl/?utm_source=osk-mielczarek.pl&amp;utm_medium=stopka&amp;utm_campaign=wykonanie" rel="noopener" title="Strona wykonana przez Wylinka"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" fill="currentColor"><path d="M9.8 22.8l-1.2-7.9 2.2-3.7 15.5 4.6-.5 1.5-7.2 5.5 4.7 15.6 5-15.6 7 0 4.1 12.7-4.2-.9-2.6 1.8-.8-2.2-5.3 15.6-4.3 0 .4 .2-2.1 2.8-1.3-1.1 1.1-1.4-3.1 .2-.1-1.7 2.2-.1-5.7-16.5-4.8 .6-.8 3.1 0 .5-.3 .5 .8 2.2-1.6 .5-.4-1.3-.8 1.6-1.5-.8 .8-1.6-1.4 .6-.6-1.6 2.3-.8 .2-.4 1.3-4.8 5.9-.8-2.4-6.9zM15.2 13.7l-.1-.4-.4 .8-.1 .8 .1 1 .1 .4 .3 .7 .3-.9 .1-.7 0-.8z"/><path class="wy-pod" d="M37.1 49.8l-4.5-13.3 2.6-1.8 4.2 .9 .9 2.8 3-9.7 0-.5 .1-.8 3.2-8.4 .5-1 .6-1 .9-1.1 1.3-1 1.1-.7 1.4-.5 1.4-.3 .7 0 .9 0 1.2 .3 1.4 .6 .8 .5 .7 .7 .6 .7 .5 .9 .3 .9 .1 .9 0 .8-.2 .9-.5 .9-.5 .6-.7 .5-.7 .3-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.6-.1-.6-.3-.7-.4-.5-.4-.4-.5-.3-.6-.3-.7 0-.7 .1-.6 .1-.5 .4-.5 .5-.3 .5-.2 .7-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1-2.1-2.8 .4-.2z"/><path class="wy-old" d="M40.8 50l.4-.2-4.1 0-4.2-12.5 2.5-1.7 4.3 .9 .6 1.9 .6-1.6 0-.3 2.4-7.8 0-.5 .1-.8 3.2-8.4 .4-.8 .6-.9 .9-1.2 .9-.9 1.3-.8 1.4-.6 1.2-.3 1.4-.1 1.3 .1 .6 .2 .8 .3 1.1 .6 .9 .7 .7 .9 .5 .9 .3 .9 .1 1.1-.1 .9-.3 .9-.4 .7-.6 .7-.6 .4-.6 .2-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.5-.1-.6-.2-.6-.3-.5-.4-.5-.5-.3-.6-.3-.7-.1-.6 0-.6 .1-.6 .3-.6 .5-.3 .4-.2 .5-.1 .5-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1zM49.6 17.1l.6 1.7-1.5 1.9 .4 .4 1.8-2.1-.7-2.1zM48.1 28.3l.5 1.8-1.7 1.8 .4 .4 1.9-2-.6-2.2zM37.9 41.7l1.7-1.5-.4-.4-1.7 1.4zM42.6 38.7l-1.5 2.8 1.1 2-1.3 2.6 .5 .2 1.5-2.8-1.1-2 1.4-2.5z"/></svg><span>wykonanie: <b>Wylinka</b></span></a></div>
  </div>
