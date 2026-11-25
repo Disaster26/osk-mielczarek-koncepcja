@@ -8,7 +8,7 @@
 <meta name="description" content="Nauka jazdy kat. B pod Oławą: jeden instruktor, Hyundai i20 jak na egzaminie, jazdy spod domu, raty bez oprocentowania. OSK Agnieszka Mielczarek, Stanowice, tel. 507 472 445.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/saira-rdzen.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/auto-1024.webp" as="image" type="image/webp" imagesrcset="img/auto-640.webp 640w, img/auto-1024.webp 1024w, img/auto-1600.webp 1600w" imagesizes="(min-width:960px) 64vw, 100vw" fetchpriority="high">
+<link rel="preload" href="img/auto-1024.webp" as="image" type="image/webp" imagesrcset="img/auto-640.webp 640w, img/auto-1024.webp 1024w, img/auto-1600.webp 1600w" imagesizes="(min-width:960px) 66vw, 100vw" fetchpriority="high">
 <style>
 @font-face{font-family:"Saira";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/saira-rdzen.woff2) format("woff2");unicode-range:U+0020-007E,U+00A0,U+00A9,U+00AB,U+00B0,U+00B7,U+00BB,U+00D3,U+00F3,U+2013,U+2018-2019,U+201C-201E,U+2022,U+2026}
 @font-face{font-family:"Saira";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/saira-pl.woff2) format("woff2");unicode-range:U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C}
@@ -61,7 +61,7 @@ section{scroll-margin-top:68px}
 
 /* pierwszy ekran */
 .hero{background:#fff;color:var(--tx);position:relative;overflow:hidden;border-bottom:1px solid var(--li)}
-.hero .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;height:calc(100svh - 64px);min-height:600px;max-height:900px;padding-top:40px;padding-bottom:48px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;height:calc(100svh - 66px);min-height:600px;max-height:1200px;padding-top:40px;padding-bottom:48px}
 .hero .txt{max-width:560px}
 .hero h1{font-size:clamp(34px,3.5vw,54px);margin-bottom:20px}
 .hero .lead{font-size:19px;color:var(--tx2);max-width:34em;margin-bottom:30px}
@@ -73,17 +73,16 @@ section{scroll-margin-top:68px}
 .btn svg{width:20px;height:20px}
 .hero .info{margin-top:22px;font-size:15.5px;color:var(--tx2)}
 @media (max-width:959px){
- .hero .wrap{grid-template-columns:1fr;gap:0;height:auto;min-height:0;max-height:none;padding:0 0 28px}
- .hero .kat{position:relative;width:auto;order:-1;margin:0}
+ .hero .wrap{display:flex;flex-direction:column;align-items:stretch;gap:0;height:auto;min-height:calc(100svh - 66px);max-height:none;padding:0}
+ .hero .kat{position:relative;width:auto;order:-1;margin:0;flex:1 1 auto;min-height:220px}
  .hero .kat::before{display:none}
- .hero .kat img{height:33svh;min-height:190px;max-height:420px;object-position:50% 62%}
- .hero .txt{padding:22px 20px 0;max-width:none}
+ .hero .kat img{position:absolute;inset:0;height:100%;object-position:50% 62%}
+ .hero .txt{padding:26px 20px 34px;max-width:none}
  .hero h1{font-size:clamp(27px,7.4vw,40px);margin-bottom:14px}
  .hero .lead{font-size:16.5px;margin-bottom:24px}
  .btn{width:100%;font-size:16.5px;padding:0 14px;white-space:nowrap}
  .hero .info{margin-top:14px;font-size:14.5px}
 }
-@media (max-width:959px) and (max-height:700px){.hero .kat img{height:30svh;min-height:170px}}
 
 /* sekcje */
 .sek{padding:96px 0}
@@ -213,7 +212,7 @@ footer .dol{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-b
    <p class="info">Kurs kat. B · jazdy doszkalające · badania dla kierowców</p>
   </div>
   <div class="kat">
-   <img src="img/auto-1024.webp" srcset="img/auto-640.webp 640w, img/auto-1024.webp 1024w, img/auto-1600.webp 1600w" sizes="(min-width:960px) 50vw, 100vw" width="1600" height="1200" alt="Samochód nauki jazdy Hyundai i20 OSK Mielczarek z tablicą L na dachu" fetchpriority="high">
+   <img src="img/auto-1024.webp" srcset="img/auto-640.webp 640w, img/auto-1024.webp 1024w, img/auto-1600.webp 1600w" sizes="(min-width:960px) 66vw, 100vw" width="1600" height="1200" alt="Samochód nauki jazdy Hyundai i20 OSK Mielczarek z tablicą L na dachu" fetchpriority="high">
   </div>
  </div>
 </section>
